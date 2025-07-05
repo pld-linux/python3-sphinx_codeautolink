@@ -74,6 +74,7 @@ PYTHONPATH=$(pwd)/src \
 %endif
 
 %if %{with doc}
+PYTHONPATH=$(pwd)/src \
 sphinx-build-3 -b html docs/src docs/_build/html
 %endif
 
@@ -110,5 +111,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with doc}
 %files apidocs
 %defattr(644,root,root,755)
-%doc docs/_build/html/*
+%doc docs/_build/html/{_images,_static,plot_directive,*.html,*.js}
 %endif
