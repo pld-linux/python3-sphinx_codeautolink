@@ -68,9 +68,10 @@ Dokumentacja API modułu Pythona sphinx_codeautolink.
 %py3_build_pyproject
 
 %if %{with tests}
+# test_references fail without network
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 PYTHONPATH=$(pwd)/src \
-%{__python3} -m pytest tests
+%{__python3} -m pytest tests -k 'not test_references'
 %endif
 
 %if %{with doc}
